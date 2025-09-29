@@ -1,0 +1,215 @@
+﻿@{
+    ViewData["Title"] = "User Profile";
+}
+
+@section Scripts {
+    <script>
+        // Script sederhana untuk preview gambar saat dipilih
+        $(document).ready(function () {
+            $('#input-profile-picture').on('change', function (event) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var output = document.getElementById('profile-picture-preview');
+                    output.src = reader.result;
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            });
+        });
+    </script>
+}
+
+<style>
+    .profile-user-img {
+        width: 128px;
+        height: 128px;
+        object-fit: cover;
+        border: 4px solid var(--pink-pastel);
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .card-primary.card-outline {
+        border-top: 3px solid var(--pink-medium);
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: #fff;
+        background-color: var(--pink-active);
+    }
+
+    .nav-pills .nav-link {
+        color: var(--pink-dark-text);
+    }
+
+    .btn-pink {
+        background-color: var(--pink-active);
+        border-color: var(--pink-active);
+        color: white;
+    }
+
+        .btn-pink:hover {
+            opacity: 0.9;
+            color: white;
+        }
+
+    .timeline-item > .fa, .timeline-item > .fas, .timeline-item > .far, .timeline-item > .fab, .timeline-item > .glyphicon, .timeline-item > .ion {
+        background-color: var(--pink-medium);
+        color: #fff;
+    }
+</style>
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0" style="color: var(--pink-dark-text);">User Profile</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+
+                <!-- Profile Image Card -->
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <label for="input-profile-picture" style="cursor: pointer;">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     id="profile-picture-preview"
+                                     src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                     alt="User profile picture">
+                            </label>
+                            <input type="file" id="input-profile-picture" class="d-none">
+                        </div>
+
+                        <h3 class="profile-username text-center" style="color: var(--pink-dark-text);">Ndru</h3>
+                        <p class="text-muted text-center">Software Engineer</p>
+
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>Posts</b> <a class="float-right">1,322</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Comments</b> <a class="float-right">543</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Joined</b> <a class="float-right">25 Sep 2025</a>
+                            </li>
+                        </ul>
+
+                        <a href="#" class="btn btn-pink btn-block"><b>Follow</b></a>
+                    </div>
+                </div>
+
+                <!-- About Me Card -->
+                <div class="card card-primary">
+                    <div class="card-header" style="background-color: var(--pink-medium); color: white;">
+                        <h3 class="card-title">About Me</h3>
+                    </div>
+                    <div class="card-body">
+                        <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                        <p class="text-muted">
+                            B.S. in Computer Science from the University of Technology
+                        </p>
+                        <hr>
+                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                        <p class="text-muted">Malibu, California</p>
+                        <hr>
+                        <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                        <p class="text-muted">
+                            <span class="tag badge badge-danger" style="background-color: var(--pink-active);">UI Design</span>
+                            <span class="tag badge badge-success">Coding</span>
+                            <span class="tag badge badge-info">Javascript</span>
+                            <span class="tag badge badge-warning">PHP</span>
+                            <span class="tag badge-primary">Node.js</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.col -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                        </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="activity">
+                                <!-- Post -->
+                                <div class="post">
+                                    <div class="user-block">
+                                        <img class="img-circle img-bordered-sm" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user image">
+                                        <span class="username">
+                                            <a href="#" style="color: var(--pink-dark-text);">Ndru</a>
+                                        </span>
+                                        <span class="description">Shared publicly - 7:30 PM today</span>
+                                    </div>
+                                    <p>
+                                        Membuat halaman profil baru dengan AdminLTE 3 itu menyenangkan! Desainnya bersih, komponennya lengkap, dan bisa dikustomisasi dengan mudah.
+                                    </p>
+                                </div>
+                                <!-- /.post -->
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <div class="tab-pane" id="settings">
+                                <form class="form-horizontal">
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="inputName" placeholder="Name" value="Ndru">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" value="ndru@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputExperience" class="col-sm-2 col-form-label">Bio</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" id="inputExperience" placeholder="Tell us about yourself..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputNewPassword" class="col-sm-2 col-form-label">New Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="inputNewPassword" placeholder="New Password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-pink">Update Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
