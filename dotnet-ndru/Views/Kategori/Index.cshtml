@@ -1,0 +1,70 @@
+﻿@model IEnumerable<dotnet_ndru.Models.Kategori>
+
+@{
+    ViewData["Title"] = "Master Data Kategori";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">@ViewData["Title"]</h3>
+        <div class="card-tools">
+            <a asp-action="Create" class="btn btn-sm" style="background-color: var(--pink-medium); color: white;"><i class="fas fa-plus"></i> Tambah Data</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table id="kategoriTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Tipe</th>
+                    <th>Nama</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <!-- BAGIAN INI YANG DIPERBAIKI -->
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipe)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nama)
+                        </td>
+                        <td>
+                            @if (item.Status == StatusAktif.Active)
+                            {
+                                <span class="badge badge-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-secondary">Not Active</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-xs"><i class="fas fa-eye"></i></a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Inisialisasi DataTable setelah tabel diisi dengan data
+        $(document).ready(function () {
+            $('#kategoriTable').DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                // Opsional: Mengurutkan berdasarkan kolom pertama secara descending (jika ID ada di kolom 0)
+                // "order": [[ 0, "desc" ]] 
+            });
+        });
+    </script>
+}

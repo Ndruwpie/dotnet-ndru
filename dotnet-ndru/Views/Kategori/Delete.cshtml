@@ -1,0 +1,43 @@
+﻿@model dotnet_ndru.Models.Kategori
+
+@{
+    ViewData["Title"] = "Konfirmasi Hapus Data";
+}
+
+<div class="card card-danger">
+    <div class="card-header">
+        <h3 class="card-title">@ViewData["Title"]</h3>
+    </div>
+    <!-- Form ini akan mengirim request POST ke metode DeleteConfirmed di Controller -->
+    <form asp-action="Delete" method="post">
+        @Html.AntiForgeryToken()
+
+        <!-- Input ini tersembunyi, tapi PENTING untuk mengirim ID item yang akan dihapus -->
+        <input type="hidden" asp-for="Id" />
+
+        <div class="card-body">
+            <h5 class="text-danger">Apakah Anda yakin ingin menghapus data ini secara permanen?</h5>
+            <p>Data yang akan dihapus:</p>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Nama)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Nama)
+                </dd>
+
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Tipe)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Tipe)
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Ya, Hapus Data</button>
+            <a asp-action="Index" class="btn btn-secondary">Batal</a>
+        </div>
+    </form>
+</div>

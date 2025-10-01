@@ -1,0 +1,57 @@
+﻿@model dotnet_ndru.Models.Kategori
+
+@{
+    ViewData["Title"] = "Detail Kategori";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">@ViewData["Title"]: @Model.Nama</h3>
+    </div>
+    <div class="card-body">
+        <h4>Informasi Lengkap</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Tipe)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Tipe)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Nama)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Nama)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Deskripsi)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Deskripsi)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-9">
+                @if (Model.Status == StatusAktif.Active)
+                {
+                    <span class="badge badge-success">Active</span>
+                }
+                else
+                {
+                    <span class="badge badge-secondary">Not Active</span>
+                }
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+            <i class="fas fa-edit"></i> Edit
+        </a>
+        <a asp-action="Index" class="btn btn-secondary">Kembali ke Daftar</a>
+    </div>
+</div>
